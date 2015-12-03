@@ -42,7 +42,7 @@ public class PacmanKata {
         board[secondGhostHeight][secondGhostWidth] = "@";
     }
 
-    public void printBorad() {
+    public void printBoard() {
         for (int i = 0; i < boardHeight; i++) {
             for (int j = 0; j < boardWidth; j++) {
                 System.out.print(board[i][j]);
@@ -119,7 +119,7 @@ public class PacmanKata {
             ghostRandomMovement(counter);
             timer++;
         }
-        printBorad();
+        printBoard();
         if (direction.equalsIgnoreCase("U") || direction.equalsIgnoreCase("D")) {
             return pacmanBornHeight;
         } else {
