@@ -75,7 +75,7 @@ public class PacmanKata {
         outer:
         for (int loop = 0; loop < steps; loop++) {
             if (!pacmanAlive(pacmanBornHeight, pacmanBornWidth, pacmanAlive)) {
-                System.out.println("You died");
+                System.out.println("Sorry,you died!");
                 break outer;
             }
 
@@ -191,14 +191,5 @@ public class PacmanKata {
         return pacmanBornHeight >= 0 && pacmanBornWidth >= 0;
     }
 
-    public static void main(String args[]) {
-        PacmanKata pacmanKata = new PacmanKata(10, 10);
-        pacmanKata.tick(6, "U");
-        pacmanKata.tick(33, "D");
-        pacmanKata.tick(22, "L");
-        pacmanKata.tick(3, "R");
-        pacmanKata.tick(2, "U");
-        pacmanKata.tick(2, "U");
-    }
 
 }
