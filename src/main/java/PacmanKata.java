@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -15,6 +17,10 @@ public class PacmanKata {
     static int firstGhostWidth;
     static int secondGhostHeight;
     static int secondGhostWidth;
+    private final Integer UP = 0;
+    private final Integer DOWN = 1;
+    private final Integer LEFT = 2;
+    private final Integer RIGHT = 3;
 
     public PacmanKata(int height, int width) {
         boardHeight = height;
@@ -34,9 +40,26 @@ public class PacmanKata {
         secondGhostWidth = width - 1;
         board[firstGhostHeight][firstGhostWidth] = "@";
         board[secondGhostHeight][secondGhostWidth] = "@";
-
     }
 
+    public void printBorad() {
+        for (int i = 0; i < boardHeight; i++) {
+            for (int j = 0; j < boardWidth; j++) {
+                System.out.print(board[i][j]);
+            }
+            System.out.println();
+        }
+        System.out.println("-------------------------");
+    }
+
+    public int tick(int steps, String direction){
+        int counter = 1;
+        int timer = 0;
+        for(int loop = 0; loop < steps; loop++){
+
+        }
+        return 0;
+    }
 
     public int tickUp(int steps) {
         int counter = 1;
@@ -46,21 +69,14 @@ public class PacmanKata {
                 board[pacmanBornHeight - innerTimer][pacmanBornWidth] = " ";
             }
             pacmanBornHeight -= counter;
-            //Allow for wraparounds:
-            if (pacmanBornHeight > board.length) {
-                pacmanBornHeight = 0;
+            if (pacmanBornHeight < 0) {
+                pacmanBornHeight += counter;
             }
             board[pacmanBornHeight][pacmanBornWidth] = "V";
+            ghostRandomMovement(counter);
             timer++;
         }
-
-        for (int i = 0; i < boardHeight; i++) {
-            for (int j = 0; j < boardWidth; j++) {
-                System.out.print(board[i][j]);
-            }
-            System.out.println();
-        }
-        System.out.println("-------------------------");
+        printBorad();
         return pacmanBornHeight;
     }//end tickDown
 
@@ -72,21 +88,14 @@ public class PacmanKata {
                 board[pacmanBornHeight + innerTimer][pacmanBornWidth] = " ";
             }
             pacmanBornHeight += counter;
-            //Allow for wraparounds:
-            if (pacmanBornHeight > board.length) {
-                pacmanBornHeight = 0;
+            if (pacmanBornHeight >= boardHeight) {
+                pacmanBornHeight -= counter;
             }
             board[pacmanBornHeight][pacmanBornWidth] = "V";
+            ghostRandomMovement(counter);
             timer++;
         }
-
-        for (int i = 0; i < boardHeight; i++) {
-            for (int j = 0; j < boardWidth; j++) {
-                System.out.print(board[i][j]);
-            }
-            System.out.println();
-        }
-        System.out.println("-------------------------");
+        printBorad();
         return pacmanBornHeight;
     }//end tickDown
 
@@ -99,21 +108,14 @@ public class PacmanKata {
                 board[pacmanBornHeight][pacmanBornWidth + innerTimer] = " ";
             }
             pacmanBornWidth += counter;
-            //Allow for wraparounds:
-            if (pacmanBornWidth > board[0].length) {
-                pacmanBornWidth = 0;
+            if (pacmanBornWidth >= boardWidth) {
+                pacmanBornWidth -= counter;
             }
             board[pacmanBornHeight][pacmanBornWidth] = "V";
+            ghostRandomMovement(counter);
             timer++;
         }
-
-        for (int i = 0; i < boardHeight; i++) {
-            for (int j = 0; j < boardWidth; j++) {
-                System.out.print(board[i][j]);
-            }
-            System.out.println();
-        }
-        System.out.println("-------------------------");
+        printBorad();
         return pacmanBornWidth;
     } //end tickRight
 
@@ -126,26 +128,71 @@ public class PacmanKata {
                 board[pacmanBornHeight][pacmanBornWidth - innerTimer] = " ";
             }
             pacmanBornWidth -= counter;
-            //Allow for wraparounds:
-            if (pacmanBornWidth > board[0].length) {
-                pacmanBornWidth = 0;
+            if (pacmanBornWidth < 0) {
+                pacmanBornWidth += counter;
             }
             board[pacmanBornHeight][pacmanBornWidth] = "V";
+            ghostRandomMovement(counter);
             timer++;
         }
-
-        for (int i = 0; i < boardHeight; i++) {
-            for (int j = 0; j < boardWidth; j++) {
-                System.out.print(board[i][j]);
-            }
-            System.out.println();
-        }
-        System.out.println("-------------------------");
+        printBorad();
         return pacmanBornWidth;
     } //end tickLeft
 
-    public void ghostRandomMovement(){
-
+    public void ghostRandomMovement(int counter) {
+        List<Integer> indexes = new ArrayList<>();
+        indexes.add(0);
+        indexes.add(1);
+        indexes.add(2);
+        indexes.add(3);
+        Random rand = new Random();
+        int index = rand.nextInt(4);
+        indexes.get(index);
+        board[firstGhostHeight][firstGhostWidth] = "*";
+        board[secondGhostHeight][secondGhostWidth] = "*";
+        if (index == UP) {
+            firstGhostHeight -= counter;
+            secondGhostHeight -= counter;
+            if (firstGhostHeight < 0) {
+                firstGhostHeight += counter;
+            }
+            if (secondGhostHeight < 0) {
+                secondGhostHeight += counter;
+            }
+            counter++;
+        } else if (index == DOWN) {
+            secondGhostHeight += counter;
+            firstGhostHeight += counter;
+            if (secondGhostHeight >= boardHeight) {
+                secondGhostHeight -= counter;
+            }
+            if (firstGhostHeight >= boardHeight) {
+                firstGhostHeight -= counter;
+            }
+            counter++;
+        } else if (index == LEFT) {
+            firstGhostWidth -= counter;
+            secondGhostWidth -= counter;
+            if (secondGhostWidth < 0) {
+                secondGhostWidth += counter;
+            }
+            if (firstGhostWidth < 0) {
+                firstGhostWidth += counter;
+            }
+            counter++;
+        } else { //RIGHT
+            firstGhostWidth += counter;
+            secondGhostWidth += counter;
+            if (secondGhostWidth >= boardWidth) {
+                secondGhostWidth -= counter;
+            }
+            if (firstGhostWidth >= boardWidth) {
+                firstGhostWidth -= counter;
+            }
+            counter++;
+        }
+        board[firstGhostHeight][firstGhostWidth] = "@";
+        board[secondGhostHeight][secondGhostWidth] = "@";
     }
 
     public boolean boardCreated() {
@@ -156,13 +203,9 @@ public class PacmanKata {
         return pacmanBornHeight >= 0 && pacmanBornWidth >= 0;
     }
 
-
     public static void main(String args[]) {
         PacmanKata pacmanKata = new PacmanKata(10, 10);
-        pacmanKata.tickUp(3);
-        pacmanKata.tickDown(7);
-        pacmanKata.tickRight(3);
-        pacmanKata.tickLeft(5);
+        pacmanKata.tickUp(10);
     }
 
 }

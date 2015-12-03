@@ -45,4 +45,5 @@ public class PacmanKataTest {
         assertEquals(2,pacmanKata.tickLeft(3));
     }
 
+
 }
