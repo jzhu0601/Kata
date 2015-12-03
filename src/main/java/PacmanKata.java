@@ -52,10 +52,33 @@ public class PacmanKata {
         System.out.println("-------------------------");
     }
 
+    public boolean pacmanAlive(int x, int y, boolean status) {
+
+        int[][] neighbors = {{x - 1, y}, {x + 1, y}, {x, y + 1}, {x, y - 1}};
+
+        for (int i = 0; i < neighbors.length; i++) {
+            int neighborX = neighbors[i][0];
+            int neighborY = neighbors[i][1];
+            if (neighborX >= 0 && neighborX < boardHeight && neighborY >= 0
+                    && neighborY < boardWidth && board[neighborX][neighborY].equals("@")) {
+                status = false;
+                return status;
+            }
+        }
+        return true;
+    }
+
     public int tick(int steps, String direction) {
         int counter = 1;
         int timer = 0;
+        boolean pacmanAlive = true;
+        outer:
         for (int loop = 0; loop < steps; loop++) {
+            if (!pacmanAlive(pacmanBornHeight, pacmanBornWidth, pacmanAlive)) {
+                System.out.println("You died");
+                break outer;
+            }
+
             if (direction.equalsIgnoreCase("U")) {
                 for (int innerTimer = 0; innerTimer < counter; innerTimer++) {
                     board[pacmanBornHeight - innerTimer][pacmanBornWidth] = " ";
@@ -97,10 +120,10 @@ public class PacmanKata {
             timer++;
         }
         printBorad();
-        if(direction.equalsIgnoreCase("U") ||direction.equalsIgnoreCase("D")) {
+        if (direction.equalsIgnoreCase("U") || direction.equalsIgnoreCase("D")) {
             return pacmanBornHeight;
-        }else{
-            return  pacmanBornWidth;
+        } else {
+            return pacmanBornWidth;
         }
     }
 
@@ -170,8 +193,12 @@ public class PacmanKata {
 
     public static void main(String args[]) {
         PacmanKata pacmanKata = new PacmanKata(10, 10);
-        // pacmanKata.tickUp(10);
-        pacmanKata.tick(3, "U");
+        pacmanKata.tick(6, "U");
+        pacmanKata.tick(33, "D");
+        pacmanKata.tick(22, "L");
+        pacmanKata.tick(3, "R");
+        pacmanKata.tick(2, "U");
+        pacmanKata.tick(2, "U");
     }
 
 }
