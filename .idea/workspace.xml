@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69b335a5-3ccb-44aa-963f-fead5e0f3cd4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/pacmankatav1.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Pacman.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/PacmanRoughDraft.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/testv1.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Pacman$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Pacman$GamePanel$GameInput.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Pacman$GamePanel.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Pacman.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/PacmanRoughDraft.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/PacmanKata.class" afterPath="$PROJECT_DIR$/target/classes/PacmanKata.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/PacmanKataTest.class" afterPath="$PROJECT_DIR$/target/test-classes/PacmanKataTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/PacmanKata.java" afterPath="$PROJECT_DIR$/src/main/java/PacmanKata.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/PacmanKataTest.java" afterPath="$PROJECT_DIR$/src/test/java/PacmanKataTest.java" />
@@ -38,27 +43,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PacmanKata.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PacmanKata.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/PacmanKata.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="133" column="25" selection-start-line="0" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+            <state vertical-scroll-proportion="-0.97889185">
+              <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6372#6373#0" expanded="true" />
-                <element signature="e#6434#6435#0" expanded="true" />
-                <element signature="e#6472#6473#0" expanded="true" />
-                <element signature="e#6540#6541#0" expanded="true" />
+                <element signature="e#5689#5690#0" expanded="true" />
+                <element signature="e#5751#5752#0" expanded="true" />
+                <element signature="e#5789#5790#0" expanded="true" />
+                <element signature="e#5857#5858#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PacmanKataTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PacmanKataTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/PacmanKataTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.93078756">
-              <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -66,6 +71,18 @@
                 <element signature="e#345#346#0" expanded="true" />
                 <element signature="e#401#402#0" expanded="true" />
                 <element signature="e#455#456#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testv1.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/testv1.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#1293#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -101,9 +118,10 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/chinese.java" />
         <option value="$PROJECT_DIR$/src/main/java/Pacman.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pacmankatav1.java" />
+        <option value="$PROJECT_DIR$/src/test/java/testv1.java" />
         <option value="$PROJECT_DIR$/src/test/java/PacmanKataTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/PacmanKata.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pacmankatav1.java" />
       </list>
     </option>
   </component>
@@ -225,6 +243,14 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -273,7 +299,7 @@
       <recent name="C:\Dev\Workspace\IntelliJ\kata\TDD-Fuse-Prep\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PacmanKata">
+  <component name="RunManager" selected="JUnit.PacmanKataTest">
     <configuration default="false" name="PacmanKata" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="PacmanKata" />
@@ -298,27 +324,6 @@
       <option name="MAIN_CLASS_NAME" value="PacmanKataTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="PacmanKataTest.testBoradCreationSuccess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="TDD-Fuse-Prep" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="PacmanKataTest" />
-      <option name="METHOD_NAME" value="testBoradCreationSuccess" />
-      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
@@ -360,6 +365,27 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="PacmanKataTest" />
       <option name="METHOD_NAME" value="testPacmanMoveRight" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="PacmanKataTest.testPacmanMoveUp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="TDD-Fuse-Prep" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="PacmanKataTest" />
+      <option name="METHOD_NAME" value="testPacmanMoveUp" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -786,17 +812,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.PacmanKata" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.PacmanKataTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.PacmanKataTest.testBoradCreationSuccess" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.PacmanKataTest.testPacmanCreationSuccess" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.PacmanKataTest.testPacmanMoveRight" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.PacmanKataTest.testPacmanCreationSuccess" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.PacmanKataTest.testPacmanMoveRight" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.PacmanKataTest.testPacmanMoveUp" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.PacmanKata" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.PacmanKataTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.PacmanKataTest.testPacmanMoveRight" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.PacmanKataTest.testPacmanCreationSuccess" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.PacmanKataTest.testBoradCreationSuccess" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.PacmanKataTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.PacmanKata" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.PacmanKataTest.testPacmanMoveUp" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.PacmanKataTest.testPacmanMoveRight" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.PacmanKataTest.testPacmanCreationSuccess" />
       </list>
     </recent_temporary>
   </component>
@@ -814,7 +840,7 @@
       <workItem from="1449064713412" duration="18933000" />
       <workItem from="1449085251284" duration="6694000" />
       <workItem from="1449108002815" duration="1068000" />
-      <workItem from="1449149822196" duration="6587000" />
+      <workItem from="1449149822196" duration="8248000" />
     </task>
     <task id="LOCAL-00001" summary="WIP">
       <created>1449151853095</created>
@@ -822,43 +848,49 @@
       <option name="project" value="LOCAL" />
       <updated>1449151853095</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="WIP, Refactoring">
+      <created>1449157364237</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1449157364237</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PacmanKataTest - 2015.12.03 at 09h 01m 11s.xml">
-      <configuration name="PacmanKataTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PacmanKataTest - 2015.12.03 at 09h 04m 19s.xml">
-      <configuration name="PacmanKataTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PacmanKataTest - 2015.12.03 at 09h 04m 41s.xml">
-      <configuration name="PacmanKataTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PacmanKataTest - 2015.12.03 at 09h 09m 17s.xml">
-      <configuration name="PacmanKataTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PacmanKataTest - 2015.12.03 at 09h 09m 47s.xml">
-      <configuration name="PacmanKataTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PacmanKataTest - 2015.12.03 at 09h 37m 56s.xml">
       <configuration name="PacmanKataTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PacmanKataTest_testPacmanCreationSuccess - 2015.12.03 at 09h 01m 02s.xml">
-      <configuration name="PacmanKataTest.testPacmanCreationSuccess" configurationId="JUnit" />
+    <history-entry file="PacmanKataTest - 2015.12.03 at 11h 03m 45s.xml">
+      <configuration name="PacmanKataTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PacmanKataTest_testPacmanMoveRight - 2015.12.03 at 09h 07m 34s.xml">
-      <configuration name="PacmanKataTest.testPacmanMoveRight" configurationId="JUnit" />
+    <history-entry file="PacmanKataTest - 2015.12.03 at 11h 03m 49s.xml">
+      <configuration name="PacmanKataTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PacmanKataTest_testPacmanMoveRight - 2015.12.03 at 09h 09m 05s.xml">
-      <configuration name="PacmanKataTest.testPacmanMoveRight" configurationId="JUnit" />
+    <history-entry file="PacmanKataTest - 2015.12.03 at 11h 05m 55s.xml">
+      <configuration name="PacmanKataTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PacmanKataTest_testPacmanMoveRight - 2015.12.03 at 09h 09m 09s.xml">
-      <configuration name="PacmanKataTest.testPacmanMoveRight" configurationId="JUnit" />
+    <history-entry file="PacmanKataTest - 2015.12.03 at 11h 05m 59s.xml">
+      <configuration name="PacmanKataTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PacmanKataTest - 2015.12.03 at 11h 10m 00s.xml">
+      <configuration name="PacmanKataTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PacmanKataTest - 2015.12.03 at 11h 10m 04s.xml">
+      <configuration name="PacmanKataTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PacmanKataTest_testPacmanMoveUp - 2015.12.03 at 11h 06m 45s.xml">
+      <configuration name="PacmanKataTest.testPacmanMoveUp" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PacmanKataTest_testPacmanMoveUp - 2015.12.03 at 11h 07m 06s.xml">
+      <configuration name="PacmanKataTest.testPacmanMoveUp" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PacmanKataTest_testPacmanMoveUp - 2015.12.03 at 11h 07m 10s.xml">
+      <configuration name="PacmanKataTest.testPacmanMoveUp" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33525000" />
+    <option name="totallyTimeSpent" value="35186000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="29" y="36" width="1409" height="770" extended-state="0" />
@@ -871,7 +903,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329188" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31441718" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37576687" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22457936" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -927,7 +959,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="WIP" />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP" />
+    <MESSAGE value="WIP, Refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP, Refactoring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -961,10 +994,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6372#6373#0" expanded="true" />
-            <element signature="e#6434#6435#0" expanded="true" />
-            <element signature="e#6472#6473#0" expanded="true" />
-            <element signature="e#6540#6541#0" expanded="true" />
+            <element signature="e#5689#5690#0" expanded="true" />
+            <element signature="e#5751#5752#0" expanded="true" />
+            <element signature="e#5789#5790#0" expanded="true" />
+            <element signature="e#5857#5858#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -990,10 +1023,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6372#6373#0" expanded="true" />
-            <element signature="e#6434#6435#0" expanded="true" />
-            <element signature="e#6472#6473#0" expanded="true" />
-            <element signature="e#6540#6541#0" expanded="true" />
+            <element signature="e#5689#5690#0" expanded="true" />
+            <element signature="e#5751#5752#0" expanded="true" />
+            <element signature="e#5789#5790#0" expanded="true" />
+            <element signature="e#5857#5858#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1035,24 +1068,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/PacmanKata.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/testv1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="133" column="25" selection-start-line="0" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6372#6373#0" expanded="true" />
-            <element signature="e#6434#6435#0" expanded="true" />
-            <element signature="e#6472#6473#0" expanded="true" />
-            <element signature="e#6540#6541#0" expanded="true" />
+            <element signature="e#0#1293#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/PacmanKataTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.93078756">
-          <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -1060,6 +1089,20 @@
             <element signature="e#345#346#0" expanded="true" />
             <element signature="e#401#402#0" expanded="true" />
             <element signature="e#455#456#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/PacmanKata.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.97889185">
+          <caret line="65" column="23" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5689#5690#0" expanded="true" />
+            <element signature="e#5751#5752#0" expanded="true" />
+            <element signature="e#5789#5790#0" expanded="true" />
+            <element signature="e#5857#5858#0" expanded="true" />
           </folding>
         </state>
       </provider>

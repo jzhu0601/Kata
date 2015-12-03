@@ -24,25 +24,25 @@ public class PacmanKataTest {
     @Test
     public void testPacmanMoveUp(){
         //Pacman moved up 3 steps, starting height on the board is 5, 5-3 is 2.
-        assertEquals(2,pacmanKata.tickUp(3));
+        assertEquals(2,pacmanKata.tick(3,"U"));
     }
 
     @Test
     public void testPacmanMoveRight(){
         //Pacman moved right 3 steps, starting width on the board is 5, 5+3 is 8.
-        assertEquals(8,pacmanKata.tickRight(3));
+        assertEquals(8,pacmanKata.tick(3,"R"));
     }
 
     @Test
     public void testPacmanMoveDown(){
         //Pacman moved down 3 steps, starting width on the board is 5, 5+3 is 8.
-        assertEquals(8,pacmanKata.tickDown(3));
+        assertEquals(8,pacmanKata.tick(3,"D"));
     }
 
     @Test
     public void testPacmanMoveLeft(){
         //Pacman moved left 3 steps, starting width on the board is 5, 5-3 is 2.
-        assertEquals(2,pacmanKata.tickLeft(3));
+        assertEquals(2,pacmanKata.tick(3,"L"));
     }
 
 
