@@ -21,6 +21,11 @@ public class PacmanKata {
     private final Integer DOWN = 1;
     private final Integer LEFT = 2;
     private final Integer RIGHT = 3;
+    private final String GHOST_FACE = "@";
+    private final String PACMAN_FACE = "V";
+    private final String DOTS = "*";
+    private final String EATEN_DOTS = " ";
+
 
     public PacmanKata(int height, int width) {
         boardHeight = height;
@@ -30,16 +35,16 @@ public class PacmanKata {
         pacmanBornWidth = (int) Math.floor(width / 2);
         for (int i = 0; i < boardHeight; i++) {
             for (int j = 0; j < boardWidth; j++) {
-                board[i][j] = "*";
+                board[i][j] = DOTS;
             }
         }
-        board[pacmanBornHeight][pacmanBornWidth] = "V";
+        board[pacmanBornHeight][pacmanBornWidth] = PACMAN_FACE;
         firstGhostHeight = 0;
         firstGhostWidth = 0;
         secondGhostHeight = height - 1;
         secondGhostWidth = width - 1;
-        board[firstGhostHeight][firstGhostWidth] = "@";
-        board[secondGhostHeight][secondGhostWidth] = "@";
+        board[firstGhostHeight][firstGhostWidth] = GHOST_FACE;
+        board[secondGhostHeight][secondGhostWidth] = GHOST_FACE;
     }
 
     public void printBoard() {
@@ -52,82 +57,66 @@ public class PacmanKata {
         System.out.println("-------------------------");
     }
 
-    public boolean pacmanAlive(int x, int y, boolean status) {
+    private boolean pacmanAlive(int x, int y) {
 
-        int[][] neighbors = {{x - 1, y}, {x + 1, y}, {x, y + 1}, {x, y - 1}};
-
-        for (int i = 0; i < neighbors.length; i++) {
-            int neighborX = neighbors[i][0];
-            int neighborY = neighbors[i][1];
-            if (neighborX >= 0 && neighborX < boardHeight && neighborY >= 0
-                    && neighborY < boardWidth && board[neighborX][neighborY].equals("@")) {
-                status = false;
-                return status;
+        try {
+            int[][] neighbors = {{x - 1, y}, {x + 1, y}, {x, y + 1}, {x, y - 1}};
+            for (int i = 0; i < neighbors.length; i++) {
+                int neighborX = neighbors[i][0];
+                int neighborY = neighbors[i][1];
+                if (neighborX >= 0 && neighborX < boardHeight && neighborY >= 0
+                        && neighborY < boardWidth && board[neighborX][neighborY].equals(GHOST_FACE)) {
+                    return false;
+                }
             }
+            return true;
+        } catch (IllegalArgumentException ex) {
+            System.out.println("Error, illegal argument passed.");
         }
-        return true;
+        return false;
     }
 
     public int tick(int steps, String direction) {
-        int counter = 1;
-        int timer = 0;
         boolean pacmanAlive = true;
-        outer:
         for (int loop = 0; loop < steps; loop++) {
-            if (!pacmanAlive(pacmanBornHeight, pacmanBornWidth, pacmanAlive)) {
-                System.out.println("Sorry,you died!");
-                break outer;
-            }
-
+            board[pacmanBornHeight][pacmanBornWidth] = EATEN_DOTS;
             if (direction.equalsIgnoreCase("U")) {
-                for (int innerTimer = 0; innerTimer < counter; innerTimer++) {
-                    board[pacmanBornHeight - innerTimer][pacmanBornWidth] = " ";
-                }
-                pacmanBornHeight -= counter;
-                if (pacmanBornHeight < 0) { //diff
-                    pacmanBornHeight += counter;//diff
-                }//diff
+                if (pacmanBornHeight <= 0)
+                    // pacman on the top of board, he needs to wrap around
+                    pacmanBornHeight = boardHeight - 1;
+                else
+                    // pacman has room to move up
+                    pacmanBornHeight--;
+            } else if (direction.equalsIgnoreCase("D")) {
+                if (pacmanBornHeight >= boardHeight - 1)
+                    pacmanBornHeight = 0;
+                else
+                    pacmanBornHeight++;
+            } else if (direction.equalsIgnoreCase("L")) {
+                if (pacmanBornWidth <= 0)
+                    pacmanBornWidth = boardWidth - 1;
+                else pacmanBornWidth--;
+            } else if (direction.equalsIgnoreCase("R")) {
+                if (pacmanBornWidth >= boardWidth - 1)
+                    pacmanBornWidth = 0;
+                else pacmanBornWidth++;
             }
-            if (direction.equalsIgnoreCase("D")) {
-                for (int innerTimer = 0; innerTimer < counter; innerTimer++) {
-                    board[pacmanBornHeight + innerTimer][pacmanBornWidth] = " ";
-                }
-                pacmanBornHeight += counter;
-                if (pacmanBornHeight >= boardHeight) {
-                    pacmanBornHeight -= counter;
-                }
+            board[pacmanBornHeight][pacmanBornWidth] = PACMAN_FACE;
+            pacmanAlive = ghostRandomMovement();
+            if (!pacmanAlive || !pacmanAlive(pacmanBornHeight, pacmanBornWidth)) {
+                System.out.println("Sorry, game over, you died!");
+                return -1;
             }
-            if (direction.equalsIgnoreCase("L")) {
-                for (int innerTimer = 0; innerTimer < counter; innerTimer++) {
-                    board[pacmanBornHeight][pacmanBornWidth - innerTimer] = " ";
-                }
-                pacmanBornWidth -= counter;
-                if (pacmanBornWidth < 0) {
-                    pacmanBornWidth += counter;
-                }
-            }
-            if (direction.equalsIgnoreCase("R")) {
-                for (int innerTimer = 0; innerTimer < counter; innerTimer++) {
-                    board[pacmanBornHeight][pacmanBornWidth + innerTimer] = " ";
-                }
-                pacmanBornWidth += counter;
-                if (pacmanBornWidth >= boardWidth) {
-                    pacmanBornWidth -= counter;
-                }
-            }
-            board[pacmanBornHeight][pacmanBornWidth] = "V";
-            ghostRandomMovement(counter);
-            timer++;
         }
         printBoard();
-        if (direction.equalsIgnoreCase("U") || direction.equalsIgnoreCase("D")) {
+        if (direction.equalsIgnoreCase("U") || direction.equalsIgnoreCase("D"))
             return pacmanBornHeight;
-        } else {
+        else
             return pacmanBornWidth;
-        }
+
     }
 
-    public void ghostRandomMovement(int counter) {
+    private boolean ghostRandomMovement() {
         List<Integer> indexes = new ArrayList<>();
         indexes.add(0);
         indexes.add(1);
@@ -136,51 +125,58 @@ public class PacmanKata {
         Random rand = new Random();
         int index = rand.nextInt(4);
         indexes.get(index);
-        board[firstGhostHeight][firstGhostWidth] = "*";
-        board[secondGhostHeight][secondGhostWidth] = "*";
+        board[firstGhostHeight][firstGhostWidth] = DOTS;
+        board[secondGhostHeight][secondGhostWidth] = DOTS;
         if (index == UP) {
-            firstGhostHeight -= counter;
-            secondGhostHeight -= counter;
-            if (firstGhostHeight < 0) {
-                firstGhostHeight += counter;
+            if (firstGhostHeight <= 0) {
+                firstGhostHeight = boardHeight - 1;
+            } else {
+                firstGhostHeight--;
             }
-            if (secondGhostHeight < 0) {
-                secondGhostHeight += counter;
+            if (secondGhostHeight <= 0) {
+                secondGhostHeight = boardHeight - 1;
+            } else {
+                secondGhostHeight--;
             }
-            counter++;
         } else if (index == DOWN) {
-            secondGhostHeight += counter;
-            firstGhostHeight += counter;
-            if (secondGhostHeight >= boardHeight) {
-                secondGhostHeight -= counter;
+            if (firstGhostHeight >= boardHeight - 1) {
+                firstGhostHeight = 0;
+            } else {
+                firstGhostHeight++;
             }
-            if (firstGhostHeight >= boardHeight) {
-                firstGhostHeight -= counter;
+            if (secondGhostHeight >= boardHeight - 1) {
+                secondGhostHeight = 0;
+            } else {
+                secondGhostHeight++;
             }
-            counter++;
         } else if (index == LEFT) {
-            firstGhostWidth -= counter;
-            secondGhostWidth -= counter;
-            if (secondGhostWidth < 0) {
-                secondGhostWidth += counter;
+            if (firstGhostWidth <= 0) {
+                firstGhostWidth = boardWidth - 1;
+            } else {
+                firstGhostWidth--;
             }
-            if (firstGhostWidth < 0) {
-                firstGhostWidth += counter;
+            if (secondGhostWidth <= 0) {
+                secondGhostWidth = boardWidth - 1;
+            } else {
+                secondGhostWidth--;
             }
-            counter++;
-        } else { //RIGHT
-            firstGhostWidth += counter;
-            secondGhostWidth += counter;
-            if (secondGhostWidth >= boardWidth) {
-                secondGhostWidth -= counter;
+        } else if (index == RIGHT) {
+            if (firstGhostWidth >= boardWidth - 1) {
+                firstGhostWidth = 0;
+            } else {
+                firstGhostWidth++;
             }
-            if (firstGhostWidth >= boardWidth) {
-                firstGhostWidth -= counter;
+            if (secondGhostWidth >= boardWidth - 1) {
+                secondGhostWidth = 0;
+            } else {
+                secondGhostWidth++;
             }
-            counter++;
         }
-        board[firstGhostHeight][firstGhostWidth] = "@";
-        board[secondGhostHeight][secondGhostWidth] = "@";
+        if (board[firstGhostHeight][firstGhostWidth].equals(PACMAN_FACE))
+            return false;
+        board[firstGhostHeight][firstGhostWidth] = GHOST_FACE;
+        board[secondGhostHeight][secondGhostWidth] = GHOST_FACE;
+        return true;
     }
 
     public boolean boardCreated() {
@@ -190,6 +186,4 @@ public class PacmanKata {
     public boolean pacmanCreated() {
         return pacmanBornHeight >= 0 && pacmanBornWidth >= 0;
     }
-
-
 }

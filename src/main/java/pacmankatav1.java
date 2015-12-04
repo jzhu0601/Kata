@@ -78,7 +78,7 @@
 //        }
 //        printBorad();
 //        return pacmanBornHeight;
-//    }//end tickDown
+//    }//end tickUp
 //
 //    public int tickDown(int steps) {
 //        int counter = 1;

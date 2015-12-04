@@ -5,8 +5,8 @@ import java.util.Scanner;
  */
 public class RunApp {
 
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("How many rows do you want to start? Minium 5 rows so Pacman have a chance to survive: ");
@@ -27,11 +27,14 @@ public class RunApp {
         System.out.println("V is Pacman! @ are ghosts, if ghosts near you, you will die!");
 
         while (scanner.hasNextLine()) {
+            int gameMonitor = 0;
             System.out.println("Which direction do you want Pacman to move? Type letter \"U\" or \"D\" or \"L\" or \"R\" to move UP,DOWN,LEFT,or RIGHT ");
             String direction = scanner.next();
             System.out.println("How many steps do you want Pacman to move? When Pacman moves, ghosts also move!");
             int steps = scanner.nextInt();
-            pacmanKata.tick(steps, direction);
+            gameMonitor = pacmanKata.tick(steps, direction);
+            if (gameMonitor == -1)
+                break;
             System.out.println("Keep Playing? Type \"Y\" for YES, or \"N\" for NO\"");
             String play = scanner.next();
             if (play.equalsIgnoreCase("N"))
