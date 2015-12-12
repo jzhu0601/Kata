@@ -1,6 +1,7 @@
 
 
 import java.util.*;
+import java.util.stream.Collector;
 
 import static java.util.Arrays.sort;
 
@@ -309,6 +310,7 @@ public class LeapYear {
 
         List<Integer> result = new ArrayList<>();
 
+
         for (int number : numbers) {
             if (number % divider == 0)
                 result.add(number);
@@ -337,21 +339,15 @@ public class LeapYear {
         }
         // -1=5, 3=4, 2=1
         int maxKey = 0;
-        int maxVal=0;
+        int maxVal = 0;
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             if (maxKey == 0) {
                 maxKey = entry.getKey();
             }
             maxKey = entry.getKey() > map.get(maxKey) ? entry.getKey() : maxKey;
-            maxVal = Math.max(maxVal,entry.getValue());
+            maxVal = Math.max(maxVal, entry.getValue());
         }
         return maxVal;
-    }
-
-
-    public static void main(String[] args) {
-       int[] var = {1,1,1,1,1,1,1,-1,2,3,4,5};
-        System.out.println(reviewFindingMaxNumInArray(var));
     }
 
 
