@@ -286,22 +286,26 @@ public class TopTwentyStringKata {
         return list.toArray(new String[list.size()]);
     }
 
+    public static boolean checkIfSubstringcontain(String input, String substr) {
+        CharSequence charSequence = substr;
+
+        return input.contains(charSequence);
+    }
 
     public static void main(String[] args) {
-        int[] arr1 = {1, 3, 5, 7, 9};
+        String test = "My name is jason";
+        int[] arr = {1,3,2,3,2};
 
-        int[] arr2 = {2, 4, 6, 8, 10};
+        List<Integer> list = new LinkedList<>();
 
-        List<Integer> list1 = new ArrayList<>();
-
+        list.add(2);
+        list.add(5);
+        list.add(10);
         List<Integer> list2 = new ArrayList<>();
-
-        for (Integer i : arr1) list1.add(i);
-        for (Integer j : arr2) list2.add(j);
-
-        list1.addAll(list2);
-        Collections.sort(list1);
-        System.out.println(list1);
+        list2.add(12);
+        list2.add(15);
+        list.addAll(2,list2);
+        System.out.println(list);
     }
 
 
