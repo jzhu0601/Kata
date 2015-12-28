@@ -83,11 +83,6 @@ public class TopTwentyStringKataTest {
         assertEquals("Java%20is%20Great", TopTwentyStringKata.replaceEachGivenCharacterToOther("Java is Great"));
     }
 
-    @Test
-    public void testFindAllPermutations() {
-        String[] expected = {"xyz", "yzx", "zxy", "xzy", "yxz", "zyx"};
-        assertArrayEquals(expected, TopTwentyStringKata.findAllPermutations("xyz"));
-    }
 
     @Test
     public void testReverseWordsInASentence() {
@@ -132,5 +127,12 @@ public class TopTwentyStringKataTest {
         String[] input = new String[]{"jason","a","json","son"};
         String[] expected = new String[]{"a","son","json","jason"};
         assertArrayEquals(expected,TopTwentyStringKata.sortStringOnTheirLength(input));
+    }
+
+    @Test
+    public void testFunReverse(){
+        String given = "012345";
+        String expected = "504132";
+        assertEquals(expected,TopTwentyStringKata.funReverse(given));
     }
 }

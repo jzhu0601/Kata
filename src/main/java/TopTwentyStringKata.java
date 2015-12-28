@@ -1,7 +1,6 @@
-import javafx.collections.transformation.SortedList;
-
-import java.lang.reflect.Array;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Jason on 12/10/15.
@@ -162,11 +161,6 @@ public class TopTwentyStringKata {
         return input.replace(space, unicode);
     }
 
-    public static String[] findAllPermutations(String input) {
-
-        return null;
-    }
-
     public static String reverseWordsInASentence(String sentence) {
         String[] parts = sentence.split(" ");
         StringBuilder sb = new StringBuilder();
@@ -208,30 +202,19 @@ public class TopTwentyStringKata {
     }
 
     public static boolean isValidShuffleOfTwoString(String first, String second, String third) {
-        boolean flag = true;
-        char[] firstArr = first.toLowerCase().toCharArray();
-        char[] secondArr = second.toLowerCase().toCharArray();
-        char[] thirdArr = third.toLowerCase().toCharArray();
-        Character[] firstCharacterArr = new Character[firstArr.length];
-        Character[] secondCharacterArr = new Character[secondArr.length];
+        int ps1, ps2, ps3;
+        ps1 = ps2 = ps3 = 0;
 
-        for (int x = 0; x < firstArr.length; x++) firstCharacterArr[x] = firstArr[x];
-        for (int y = 0; y < secondArr.length; y++) secondCharacterArr[y] = secondArr[y];
-
-        List<Character> firstList = Arrays.asList(firstCharacterArr);
-        List<Character> secondList = Arrays.asList(secondCharacterArr);
-
-        for (int i = 0; i < thirdArr.length; i++) {
-            Character temp = thirdArr[i];
-            if ((firstList.contains(temp) && firstList.get(i).compareTo(firstList.get(i + 1)) < 0)
-                    || (secondList.contains(temp) && secondList.get(i).compareTo(secondList.get(i + 1)) < 0)) {
-                continue;
-            } else {
-                flag = false;
-                break;
-            }
+        while (ps3 < third.length()) {
+            if (ps1 < first.length() && third.charAt(ps3) == first.charAt(ps1))
+                ps1++;
+            else if (ps2 < second.length() && third.charAt(ps3) == second.charAt(ps2))
+                ps2++;
+            else
+                return false;
+            ps3++;
         }
-        return flag;
+        return true;
     }
 
     public static int checkIfAStringContainsAnotherString(String first, String second) {
@@ -292,20 +275,349 @@ public class TopTwentyStringKata {
         return input.contains(charSequence);
     }
 
+
+    public static String accum(String s) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            sb.append(s.toUpperCase().charAt(i));
+            for (int j = 0; j < i; j++)
+                sb.append(s.toLowerCase().charAt(i));
+            sb.append('-');
+        }
+        sb.setLength(Math.max(sb.length() - 1, 0));
+        return sb.toString();
+    }
+
+
+    public static int mxdiflg(String[] a1, String[] a2) {
+        if (a1.length == 0 || a2.length == 0) return -1;
+        int[] a1Result = minAndMax(a1);
+        int[] a2Result = minAndMax(a2);
+        return Math.max(a1Result[0] - a2Result[1], a2Result[0] - a1Result[1]);
+
+    }
+
+    public static int[] minAndMax(String[] input) {
+        int max = 0;
+        int min = 0;
+        for (String x : input) {
+            max = Math.max(max, x.length());
+            if (min == 0) min = x.length();
+            min = Math.min(min, x.length());
+        }
+        int[] result = {max, min};
+        return result;
+    }
+
+    public static double twoDecimalPlacesNotRounding(double number) {
+        String numStr = "";
+        String[] parts = new String[2];
+        double dubResult = 0;
+        if (number > 0) {
+            numStr = ((Double) number).toString();
+            parts = numStr.replace(".", "-").split("-");
+            String result = parts[0] + "." + parts[1].substring(0, 2);
+            dubResult = Double.parseDouble(result);
+        } else {
+            numStr = ((Double) Math.abs(number)).toString();
+            parts = numStr.replace(".", "-").split("-");
+            String result = "-" + parts[0] + "." + parts[1].substring(0, 2);
+            dubResult = Double.parseDouble(result);
+        }
+        return dubResult;
+    }
+
+    public static String longest(String s1, String s2) {
+
+        char[] s1Arr = s1.toCharArray();
+        char[] s2Arr = s2.toCharArray();
+        List<Character> list = new ArrayList<>();
+        for (Character c : s1Arr) list.add(c);
+        for (Character c : s2Arr) list.add(c);
+        Character[] resultArr = list.toArray(new Character[list.size()]);
+        Arrays.sort(resultArr);
+        Set<Character> set = new LinkedHashSet<>();
+        for (int i = 0; i < resultArr.length; i++) {
+            set.add(resultArr[i]);
+        }
+        StringBuffer sb = new StringBuffer();
+        for (Character c : set) sb.append(c);
+        return sb.toString();
+    }
+
+    public static int gps(int s, double[] x) {
+
+        if (s <= 1) return 0;
+        if (x.length == 0) return -1;
+
+        final int SEC_TO_HOUR = 3600;
+        List<Double> result = new ArrayList<>();
+
+        for (int i = 0; i < x.length - 1; i++) {
+            Double speed = (x[i + 1] - x[i]) * SEC_TO_HOUR / s;
+            result.add(speed);
+        }
+
+        Double[] resultArr = result.toArray(new Double[result.size()]);
+        Arrays.sort(resultArr);
+
+        int max = (int) Math.floor(resultArr[resultArr.length - 1]);
+        return max;
+    }
+
+    public static int GetSum(int a, int b) {
+        int sumVal = 0;
+        if (a == b) return a;
+        else if (a < b) {
+            for (int i = a; i <= b; i++) {
+                sumVal += i;
+            }
+        } else {
+            for (int j = b; j <= a; j++) {
+                sumVal += j;
+            }
+        }
+        return sumVal;
+    }
+
+    public static int movie(int card, int ticket, double perc) {
+
+        int times = 1;
+        int totalCostBuyTicket = 0;
+        double actualPerc = 0;
+        double totalCostBuyCard = 0;
+        int cardCost = 0;
+        while (cardCost >= totalCostBuyTicket) {
+            totalCostBuyTicket = ticket * times;
+            actualPerc = Math.pow(perc, times);
+            totalCostBuyCard = card + ticket * actualPerc;
+            cardCost = (int) Math.round(totalCostBuyCard);
+            times++;
+        }
+        return times;
+    }
+
+    private static Map<String, String> dictionary = new HashMap<>();
+
+    public static String makeBackronym(String acronym) {
+        char[] acronymArr = acronym.toUpperCase().toCharArray();
+        String result = "";
+        for (char c : acronymArr) {
+            result += dictionary.get("" + c) + " ";
+        }
+        return result.substring(0, result.length() - 1);
+    }
+
+    //    SeriesSum(1) => 1 = "1"
+    //    SeriesSum(2) => 1 + 1/4 = "1.25"
+    //    SeriesSum(5) => 1 + 1/4 + 1/7 + 1/10 + 1/13 = "1.57"
+    public static String seriesSum(int n) {
+        double increment = 0d;
+        double sum = 0d;
+        for (int i = 1; i <= n; i++) {
+            sum += 1 / (1 + increment);
+            increment += 3d;
+        }
+        return "" + (Math.round(sum * 100d)) / 100d;
+    }
+
+    public static boolean validate(final String eanCode) {
+
+        char[] eanArr = eanCode.toCharArray();
+        int sum = 0;
+        for (int i = 0; i < eanArr.length - 1; i += 2) {
+            sum += Integer.parseInt("" + eanArr[i]) * 1 + Integer.parseInt("" + eanArr[i + 1]) * 3;
+        }
+        int mod = 10 - (sum % 10);
+        if (mod == 10) mod = 0;
+        if (Integer.parseInt("" + eanArr[eanArr.length - 1]) == mod)
+            return true;
+        else
+            return false;
+    }
+
+    //when n = 11;
+    //1110987654321
+    //111098765432
+    //11109876543
+    //1110987654
+    //111098765
+    //11109876
+    //1110987
+    //111098
+    //11109
+    //1110
+    //11
+    public static String pattern(int n) {
+        if (n < 1) return "";
+        String finalPattern = "";
+        List<String> patternList = new ArrayList<>();
+        int conter = n;
+        while (conter > 0) {
+            String pattern = "";
+            for (int i = n; i > n - conter; i--) {
+                pattern += ("" + (i));
+            }
+            patternList.add(pattern);
+            conter--;
+        }
+        for (String c : patternList) finalPattern += c + "\n";
+        return finalPattern.toString().substring(0, finalPattern.length() - 1);
+    }
+
+    public static int factorial(int n) {
+        if (n < 0 || n > 12) throw new IllegalArgumentException();
+        else {
+            int sum = 1;
+            for (int i = n; i >= 1; i--) {
+                sum *= i;
+            }
+            return sum;
+        }
+    }
+
+    public static String getQuote(String[] quotes, String hero) {
+
+        String heroName = "";
+        switch (hero.substring(0, 3).toLowerCase()) {
+            case "bat":
+                heroName = "Batman";
+                break;
+            case "rob":
+                heroName = "Robin";
+                break;
+            case "jok":
+                heroName = "Joker";
+                break;
+        }
+        int index = 0;
+        String restOfStr = hero.substring(3);
+        for (char c : restOfStr.toCharArray()) {
+            String find = "" + c;
+            if (find.matches("\\d")) {
+                index = Integer.parseInt(find);
+            }
+        }
+
+        return heroName + ": " + quotes[index];
+    }
+
+    public static String makeComplement(String dna) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : dna.toUpperCase().toCharArray()) {
+            String cc = "" + c;
+            switch (cc) {
+                case "A":
+                    sb.append("T");
+                    break;
+                case "T":
+                    sb.append("A");
+                    break;
+                case "C":
+                    sb.append("G");
+                    break;
+                case "G":
+                    sb.append("C");
+                    break;
+            }
+        }
+        return sb.toString();
+    }
+
+    public static long conjecture(long x) {
+        List<Long> list = new ArrayList<>();
+        while (x > 1) {
+            if (x % 2 == 0) {
+                x /= 2;
+            } else {
+                x = x * 3 + 1;
+            }
+            list.add(x);
+        }
+        if (x == 1l) list.add(x);
+        return list.size();
+    }
+
+    public static int mystery(String s) {
+        char[] letters = s.toCharArray();
+        int x = 0;
+        for (int i = 0; i < letters.length; i++) {
+            if (letters[i] == ' ') {
+                letters[i] = '_';
+                x++;
+            }
+        }
+        System.out.println(s);
+        return x;
+    }
+
+    public static String funReverse(String s) {
+        StringBuffer sb = new StringBuffer(s);
+        sb.reverse();
+        String arr = sb.toString();
+        int counter = 0;
+        for (int i = 1; i < s.length() - 2; i++) {
+            // arr.replace();
+        }
+        return null;
+    }
+
+    private static String text;
+
+    public static List<String> getTokens(String pattern) {
+        ArrayList<String> tokens = new ArrayList<>();
+        Pattern tokSplitter = Pattern.compile(pattern);
+        Matcher m = tokSplitter.matcher(text);
+
+        while (m.find()) {
+            tokens.add(m.group());
+        }
+
+        return tokens;
+    }
+
+
+    public static int power(int i) {
+        if (i == 0) {
+            return 1;
+        } else {
+            return 2 * power(i - 1); // why we decrease with 1 and how the recursion works here
+        }
+    }
+
+    public static String getSubStringWithUnique(String s) {
+        Set<Character> set = new LinkedHashSet<>();
+        char[] ch = s.toCharArray();
+        for(Character c: ch){
+            set.add(c);
+        }
+        StringBuilder sb = new StringBuilder();
+        for(char c : set){
+            sb.append(c);
+        }
+
+        return sb.toString();
+    }
+
+    public String sortGiftCode(String code){
+        Set<Character> set = new TreeSet<>();
+        for(char c : code.toCharArray()){
+            set.add(c);
+        }
+        List<Character> arr = new ArrayList<>();
+        for(char c : set){
+            arr.add(c);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for(char c:arr) sb.append(c);
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
-        String test = "My name is jason";
-        int[] arr = {1,3,2,3,2};
+        Integer i = 1;
 
-        List<Integer> list = new LinkedList<>();
-
-        list.add(2);
-        list.add(5);
-        list.add(10);
-        List<Integer> list2 = new ArrayList<>();
-        list2.add(12);
-        list2.add(15);
-        list.addAll(2,list2);
-        System.out.println(list);
+        System.out.println(power(3));
     }
 
 

@@ -86,6 +86,10 @@ public class LeapYearTest {
     }
 
 
+    @Test
+    public void testAnswer(){
+        assertEquals(8, TopTwentyStringKata.conjecture(20));
+    }
 
 
 
