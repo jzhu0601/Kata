@@ -7,8 +7,13 @@ import static org.junit.Assert.*;
  */
 public class DailyKataTest {
 
+    DailyKata dailyKata = new DailyKata();
     @Test
-    public void testValidateWord() throws Exception {
-
+    public void simpleTest() {
+        assertEquals("Thank you for teaching me hello", dailyKata.learnWord("hello"));
+        assertEquals("Thank you for teaching me world", dailyKata.learnWord("world"));
+        assertEquals("Thank you for teaching me goodbye", dailyKata.learnWord("goodbye"));
+        assertEquals("I already know the word world", dailyKata.learnWord("world"));
+        assertEquals("I already know the word World", dailyKata.learnWord("World"));
     }
 }
