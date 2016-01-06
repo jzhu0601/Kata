@@ -127,6 +127,7 @@ public class DailyKata {
     }
 
     Set<String> set = new HashSet<>();
+
     public String learnWord(String input) {
         if (!input.toLowerCase().matches("[a-z]+"))
             return "I do not understand the input";
@@ -139,6 +140,23 @@ public class DailyKata {
             return "Thank you for teaching me " + input;
     }
 
+    public static String totalLicks(Map<String, Integer> env) {
+        if(env.size()==0)return "It took 252 licks to get to the tootsie roll center of a tootsie pop.";
+        final int AVG_LICK = 252;
+        Map.Entry<String, Integer> maxEntry = null;
+        int sumDef = 0;
+        for (Map.Entry<String, Integer> entry : env.entrySet()) {
+            sumDef += entry.getValue();
+            if (maxEntry == null)
+                maxEntry = entry;
+            maxEntry = maxEntry.getValue() > entry.getValue() ? maxEntry : entry;
+        }
+        int finalLick = AVG_LICK + sumDef;
+        if (maxEntry.getValue() > 0)
+            return "It took " + finalLick + " licks to get to the tootsie roll center of a tootsie pop. The toughest challenge was " + maxEntry.getKey() + ".";
+        else
+            return "It took " + finalLick + " licks to get to the tootsie roll center of a tootsie pop.";
+    }
 
     public static void main(String[] args) {
 
