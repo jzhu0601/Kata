@@ -141,7 +141,7 @@ public class DailyKata {
     }
 
     public static String totalLicks(Map<String, Integer> env) {
-        if(env.size()==0)return "It took 252 licks to get to the tootsie roll center of a tootsie pop.";
+        if (env.size() == 0) return "It took 252 licks to get to the tootsie roll center of a tootsie pop.";
         final int AVG_LICK = 252;
         Map.Entry<String, Integer> maxEntry = null;
         int sumDef = 0;
@@ -158,8 +158,63 @@ public class DailyKata {
             return "It took " + finalLick + " licks to get to the tootsie roll center of a tootsie pop.";
     }
 
+
+    public static int sumDigits(int n) {
+        if (n < 10)
+            return n;
+        return sumDigits(n / 10) + n % 10;
+    }
+
+    public boolean cigarParty(int cigars, boolean isWeekend) {
+        if (isWeekend) {
+            if (cigars >= 40) return true;
+        } else {
+            if (cigars >= 40 && cigars <= 60)
+                return true;
+        }
+        return false;
+    }
+
+    public static int[] race(int v1, int v2, int g) {
+        int totalSecondsTaken = 0;
+        if (v2 > v1) {
+            totalSecondsTaken = (g * 3600) / (v2 - v1);
+        } else {
+            return null;
+        }
+        return new int[]{totalSecondsTaken / 3600, (totalSecondsTaken % 3600) / 60, totalSecondsTaken % 60};
+    }
+
+    public static int countYZ(String str) {
+        char[] charArr = str.toLowerCase().toCharArray();
+        int count = 0;
+        for (int i = 0; i < str.length() - 1; i++) {
+            if (((charArr[i] == 'y' || charArr[i] == 'z') && !Character.isLetter(charArr[i + 1])) || (charArr[charArr.length - 1] == 'y' || charArr[charArr.length - 1] == 'z'))
+                count++;
+        }
+        return count;
+    }
+
+    public static boolean makeBricks(int small, int big, int goal) {
+        if (big * 5 > goal) {
+            if ((big * 5) % (goal - small) == 0 || (big * 5) - (goal - small) == 5)
+                return true;
+            return false;
+        }
+
+        if (big * 5 == goal) {
+            return true;
+        } else {
+            // big*5 < goal
+            if (goal - big * 5 <= small)
+                return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
 
+        System.out.println(makeBricks(0, 3, 10));
     }
 
 }

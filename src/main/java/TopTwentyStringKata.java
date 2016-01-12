@@ -588,36 +588,127 @@ public class TopTwentyStringKata {
     public static String getSubStringWithUnique(String s) {
         Set<Character> set = new LinkedHashSet<>();
         char[] ch = s.toCharArray();
-        for(Character c: ch){
+        for (Character c : ch) {
             set.add(c);
         }
         StringBuilder sb = new StringBuilder();
-        for(char c : set){
+        for (char c : set) {
             sb.append(c);
         }
 
         return sb.toString();
     }
 
-    public String sortGiftCode(String code){
+    public String sortGiftCode(String code) {
         Set<Character> set = new TreeSet<>();
-        for(char c : code.toCharArray()){
+        for (char c : code.toCharArray()) {
             set.add(c);
         }
         List<Character> arr = new ArrayList<>();
-        for(char c : set){
+        for (char c : set) {
             arr.add(c);
         }
 
         StringBuilder sb = new StringBuilder();
-        for(char c:arr) sb.append(c);
+        for (char c : arr) sb.append(c);
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        Integer i = 1;
 
-        System.out.println(power(3));
+    public static int loneSum(int a, int b, int c) {
+        int[] arr = new int[]{a, b, c};
+        java.util.Map<Integer, Integer> map = new java.util.HashMap<>();
+
+        for (Integer i : arr) {
+            Integer count = map.get(i);
+            if (count == null) {
+                map.put(i, 1);
+            } else {
+                map.put(i, ++count);
+            }
+        }
+        System.out.println(map);
+        int sum = 0;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() != 1)
+                continue;
+            sum += entry.getKey();
+        }
+        return sum;
+    }
+
+    static int counter;
+
+    public static int count8(int n) {
+        if (n == 0) return 0;
+
+        if (n % 10 == 8) {
+            if (n / 10 % 10 == 8) return 2 + count8(n / 10);
+            return 1 + count8(n / 10);
+        } else {
+            return count8(n / 10);
+        }
+    }
+
+    public static int countX(String str) {
+        if (str.length() == 0) return 0;
+        if (str.charAt(str.length() - 1) == 'x') {
+            return 1 + countX(str.substring(0, str.length() - 1));
+        }
+        return countX(str.substring(0, str.length() - 1));
+    }
+
+    public static int countHi(String str) {
+        if (str.length() == 0) {
+            return 0;
+        }
+
+        if (str.charAt(str.length() - 1) == 'i' && str.length() > 1) {
+            if (str.charAt(str.length() - 2) == 'h') {
+                return 1 + countHi(str.substring(0, str.length() - 1));
+            }
+        }
+        return countHi(str.substring(0, str.length() - 1));
+    }
+
+    public String changeXY(String str) {
+        if (str.length() == 0) return str;
+
+        if (str.charAt(0) == 'x') {
+            return "y" + changeXY(str.substring(1));
+        } else {
+            return str.charAt(0) + changeXY(str.substring(1));
+        }
+    }
+
+    public static int centeredAverage(int[] nums) {
+        if (nums.length % 2 != 0)
+            return nums[(nums.length) / 2];
+        return 0;
+    }
+
+    public static int sum67(int[] nums) {
+        int sum = 0;
+        boolean sixMode = false;
+        for(int i = 0; i < nums.length; i++)
+        {
+            if(sixMode)
+            {
+                if(nums[i] == 7)
+                    sixMode = false;
+            }
+            else if(nums[i] == 6)
+                sixMode = true;
+            else
+                sum += nums[i];
+        }
+        return sum;
+    }
+
+
+
+    public static void main(String[] args) {
+
     }
 
 
