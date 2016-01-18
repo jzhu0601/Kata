@@ -690,14 +690,11 @@ public class TopTwentyStringKata {
     public static int sum67(int[] nums) {
         int sum = 0;
         boolean sixMode = false;
-        for(int i = 0; i < nums.length; i++)
-        {
-            if(sixMode)
-            {
-                if(nums[i] == 7)
+        for (int i = 0; i < nums.length; i++) {
+            if (sixMode) {
+                if (nums[i] == 7)
                     sixMode = false;
-            }
-            else if(nums[i] == 6)
+            } else if (nums[i] == 6)
                 sixMode = true;
             else
                 sum += nums[i];
@@ -705,10 +702,50 @@ public class TopTwentyStringKata {
         return sum;
     }
 
+    public boolean has22(int[] nums) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == 2 && nums[i + 1] == 2) return true;
+        }
+        return false;
+    }
+
+    public boolean lucky13(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 1 || nums[i] == 3) return false;
+        }
+        return true;
+    }
+
+    public boolean sum28(int[] nums) {
+        int sum = 0;
+        for (int i : nums) {
+            if (i == 2) sum += i;
+        }
+        return sum == 8;
+    }
+
+    public static boolean more14(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (Integer i : nums) {
+            Integer count = map.get(i);
+            if (count == null)
+                map.put(i, 1);
+            else
+                map.put(i, ++count);
+        }
+        int numOnes = 0;
+        int numFours = 0;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getKey() == 1) numOnes = entry.getValue();
+            if (entry.getKey() == 4) numFours = entry.getValue();
+        }
+        return numOnes > numFours;
+    }
 
 
     public static void main(String[] args) {
-
+        int i[] = {1, 4, 1, 4, 1, 6};
+        System.out.println(more14(i));
     }
 
 
