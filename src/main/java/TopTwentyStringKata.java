@@ -690,14 +690,11 @@ public class TopTwentyStringKata {
     public static int sum67(int[] nums) {
         int sum = 0;
         boolean sixMode = false;
-        for(int i = 0; i < nums.length; i++)
-        {
-            if(sixMode)
-            {
-                if(nums[i] == 7)
+        for (int i = 0; i < nums.length; i++) {
+            if (sixMode) {
+                if (nums[i] == 7)
                     sixMode = false;
-            }
-            else if(nums[i] == 6)
+            } else if (nums[i] == 6)
                 sixMode = true;
             else
                 sum += nums[i];
@@ -705,11 +702,120 @@ public class TopTwentyStringKata {
         return sum;
     }
 
+    public static String frontTimes(String str, int n) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            if (str.length() < 3) {
+                sb.append(str);
+            } else {
+                sb.append(str.substring(0, 3));
+            }
 
+        }
+        return sb.toString();
+    }
+
+    public static String doubleChar(String str) {
+        StringBuilder sb = new StringBuilder();
+        char[] arr = str.toCharArray();
+        for (char c : arr) {
+            sb.append("" + c + c);
+        }
+        return sb.toString();
+    }
+
+    public static String plusOut(String str, String word) {
+        int pos = str.indexOf(word);
+        StringBuilder sb = new StringBuilder(str.length());
+        while (pos != -1) {
+            for (int i = 0; i < pos; i++)
+                sb.append("+");
+            sb.append(word);
+            str = str.substring(pos + word.length());
+            pos = str.indexOf(word);
+        }
+        for (char c : str.toCharArray()) {
+            sb.append("+");
+        }
+        return sb.toString();
+    }
+
+    public static String wordEnds(String str, String word) {
+        int pos = str.indexOf(word);
+        StringBuilder sb = new StringBuilder();
+        while (pos != -1) {
+            if (pos > 0)
+                sb.append(str.charAt(pos - 1));
+            if (pos + word.length() < str.length())
+                sb.append(str.charAt(pos + word.length()));
+            pos = str.indexOf(word, pos + word.length());
+        }
+        return sb.toString();
+    }
+
+    public static boolean xyzThere(String str) {
+        CharSequence charSequence = "xyz";
+        if (!str.contains(charSequence))
+            return false;
+        else {
+            int pos = str.indexOf("xyz");
+            while (pos != -1) {
+                if (pos == 0)
+                    return true;
+                else if (!("" + str.charAt(pos - 1)).equals(".")) {
+                    return true;
+                }
+                str = str.substring(pos + 3);
+                pos = str.indexOf("xyz");
+            }
+            return false;
+        }
+    }
+
+
+    public static boolean xyBalance(String str) {
+        Stack<Character> stack = new Stack<>();
+        for (Character c : str.toCharArray()) {
+            if (c == 'x') stack.push(c);
+            if (c == 'y') stack.clear();
+        }
+        return stack.empty();
+    }
+
+    public static boolean xyBalanceWithoutCollection(String str) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : str.toCharArray()) {
+            if (c == 'x') sb.append(c);
+            if (c == 'y') sb.append(c);
+        }
+        String result = sb.toString();
+
+        if (result.length() > 0 && result.substring(result.length() - 1).equals("y")) return true;
+        if (result.length() == 0) return true;
+        return false;
+    }
+
+    public int noTeenSum(int a, int b, int c) {
+        int sum = 0;
+        a = fixTeen(a);
+        b = fixTeen(b);
+        c = fixTeen(c);
+        return a + b + c;
+    }
+
+    public int fixTeen(int n) {
+        if (13 <= n && n <= 19) {
+            if (n == 15 || n == 16) {
+                return n;
+            } else
+                return 0;
+        } else {
+            return n;
+        }
+    }
 
     public static void main(String[] args) {
 
     }
-
 
 }

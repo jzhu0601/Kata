@@ -212,6 +212,7 @@ public class DailyKata {
         return false;
     }
 
+
     public static void main(String[] args) {
 
         System.out.println(makeBricks(0, 3, 10));
