@@ -172,7 +172,7 @@ public class TopTwentyStringKata {
 
     public static boolean checkPalindrome(String input) {
         StringBuilder sb = new StringBuilder(input);
-        return input.equals(sb.reverse().toString()) ? true : false;
+        return input.equals(sb.reverse().toString());
     }
 
     public static String removeDuplicateCharacters(String input) {
@@ -219,7 +219,6 @@ public class TopTwentyStringKata {
 
     public static int checkIfAStringContainsAnotherString(String first, String second) {
         CharSequence secondSeq = second;
-        char[] secondArr = second.toLowerCase().toCharArray();
         if (first.contains(secondSeq)) {
             return first.indexOf(secondSeq.charAt(0));
         } else {

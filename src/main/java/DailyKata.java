@@ -1,3 +1,5 @@
+import com.jasonzhu.reflection.Apple;
+
 import java.math.BigInteger;
 import java.util.*;
 
@@ -27,6 +29,7 @@ public class DailyKata {
 
     static int find(int[] integers) {
         //starting looking from first element, base on even or odd, look for 2nd, and 3rd.
+
         int sizeOfArr = integers.length;
         int counter = 2;
         boolean firstElementIsEven = integers[0] % 2 == 0;
@@ -185,16 +188,6 @@ public class DailyKata {
         return new int[]{totalSecondsTaken / 3600, (totalSecondsTaken % 3600) / 60, totalSecondsTaken % 60};
     }
 
-    public static int countYZ(String str) {
-        char[] charArr = str.toLowerCase().toCharArray();
-        int count = 0;
-        for (int i = 0; i < str.length() - 1; i++) {
-            if (((charArr[i] == 'y' || charArr[i] == 'z') && !Character.isLetter(charArr[i + 1])) || (charArr[charArr.length - 1] == 'y' || charArr[charArr.length - 1] == 'z'))
-                count++;
-        }
-        return count;
-    }
-
     public static boolean makeBricks(int small, int big, int goal) {
         if (big * 5 > goal) {
             if ((big * 5) % (goal - small) == 0 || (big * 5) - (goal - small) == 5)
@@ -212,9 +205,51 @@ public class DailyKata {
         return false;
     }
 
-    public static void main(String[] args) {
-
-        System.out.println(makeBricks(0, 3, 10));
+    public static int countYZ(String str) {
+        String[] parts = str.toLowerCase().split("\\P{Alpha}+");
+        int count = 0;
+        for (String string : parts) {
+            if (string.equals("")) continue;
+            char target = string.charAt(string.length() - 1);
+            if (target == 'y' || target == 'z') count++;
+        }
+        return count;
     }
+
+    public static String withoutString(String base, String remove) {
+        CharSequence toRemove = remove.toLowerCase();
+        String result = base.toLowerCase().replace(toRemove, "");
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] a = {2, 3, 10, 2, 4, 8, 1};
+        System.out.println(maxDifference(a));
+    }
+
+    static String[] missingWords(String s, String t) {
+        if (t.length() < 1 || s.length() > 1_000_000) return new String[]{""};
+        List<String> sList = new ArrayList<>(Arrays.asList(s.split(" ")));
+        List<String> tList = Arrays.asList(t.split(" "));
+        sList.removeAll(tList);
+        return sList.toArray(new String[sList.size()]);
+    }
+
+    static int maxDifference(int[] a) {
+        if (a.length < 1 || a.length > 1_000_000) return -1;
+        int[] oldArr = Arrays.copyOf(a, a.length);
+        Arrays.sort(a);
+        int max = a[a.length - 1];
+        if (max > 1_000_000 || a[0] < -1_000_000) return -1;
+        int min = max;
+        for (int i = 0; i < oldArr.length; i++) {
+            if (oldArr[i] < max) min = Math.min(min, oldArr[i]);
+            if (oldArr[i] == max) break;
+        }
+        return min == max ? -1 : max - min;
+    }
+
+
+
 
 }

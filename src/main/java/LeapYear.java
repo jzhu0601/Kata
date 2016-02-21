@@ -351,20 +351,11 @@ public class LeapYear {
     }
 
 
-//    public static void main(String[] args) throws IOException {
-//        BufferedReader br = new BufferedReader(new FileReader("test.txt"));
-//        StringBuilder sb = new StringBuilder();
-//        String line = br.readLine();
-//
-//        while (line!=null){
-//            sb.append(line);
-//            sb.append(System.lineSeparator());
-//            line=br.readLine();
-//        }
-//        String everything =  sb.toString();
-//        br.close();
-//        System.out.println(everything);
-//    }
+    public static void main(String[] args) {
+       Queue<Integer> queue = new LinkedList<>();
+        queue.offer(1);
+
+    }
 
 
 }

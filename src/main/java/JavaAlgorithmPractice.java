@@ -31,13 +31,38 @@ public class JavaAlgorithmPractice {
 
     }
 
+    public static List<Integer> findOddTwoNumbers(int[] arr) {
+        List<Integer> list = new ArrayList<>();
+        Map<Integer, Integer> map = new HashMap<>();
+        for (Integer i : arr) {
+            Integer count = map.get(i);
+            if (count == null) map.put(i, 1);
+            else map.put(i, ++count);
+        }
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == 1) list.add(entry.getKey());
+        }
+        return list;
+    }
 
+    public static int smallestPositiveNumber(int[] arr){
+
+        List<Integer> pos = new ArrayList<>();
+        for(int i =0; i < arr.length; i++){
+            if(arr[i]>0) pos.add(arr[i]);
+        }
+        Collections.sort(pos);
+        if(pos.get(0)>1) return 1;
+        for(int j=0;j< pos.size();j++){
+            if(pos.get(j)+1 != pos.get(j+1))
+                return pos.get(j)+1;
+        }
+        return 0;
+    }
     public static void main(String[] args) {
-        int[] arr1 = {2, 5, 6, 9};
-        int[] arr2 = {1, 2, 3, 29};
-        String[] words = {"my","name","is","jason"};
-        String[] more = {"what","is","your","name"};
-        System.out.println(merge(words,more));
+        int[] arr = {1, 1, 0, -1, -2};
+        // 1,2,3,6,8,15
+        System.out.println(smallestPositiveNumber(arr));
     }
 }
 
